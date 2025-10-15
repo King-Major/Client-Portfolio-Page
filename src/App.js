@@ -14,6 +14,7 @@ import Portfolio from './components/portfolio';
 import BlogPage from './pages/BlogPage';
 import Media from './pages/Media';
 import Contact from './components/ContactForm';
+import ServicesPage from './components/sections/Services';
 
 const App = () => {
   return (
@@ -25,7 +26,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<AboutPage />} />
-              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/services" element={<ServicesPage/>} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/media" element={<Media />} />
               <Route path="/contact" element={<Contact />} />
