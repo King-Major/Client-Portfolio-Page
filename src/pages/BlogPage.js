@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, Sparkles, ArrowRight, Calendar, User, ArrowLeft, Clock } from 'lucide-react';
+import { BookOpen, Sparkles, ArrowRight, Calendar, User, ArrowLeft, Clock, Share2, Twitter, Facebook, MessageCircle } from 'lucide-react';
 
 const AnimatedSection = ({ children, className = '' }) => {
   return (
@@ -19,7 +19,7 @@ const BlogPage = () => {
       title: "The 5 Habits of High-Impact Leaders",
       category: "purpose-strategy",
       categoryLabel: "Purpose & Strategy",
-      date: "March 15, 2025",
+      date: "March 15, 2026",
       author: "Leadership Team",
       excerpt: "Discover the daily practices that separate good leaders from great ones. These five essential habits will transform your leadership effectiveness and team performance.",
       image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80",
@@ -50,7 +50,7 @@ const BlogPage = () => {
       title: "Leading with Divine Authority",
       category: "faith-calling",
       categoryLabel: "Faith & Calling",
-      date: "March 12, 2025",
+      date: "March 12, 2026",
       author: "Ministry Team",
       excerpt: "Understanding how to step into your God-given authority as a leader. Learn to lead with confidence rooted in divine purpose and calling.",
       image: "https://images.unsplash.com/photo-1501612780327-45045538702b?w=1200&q=80",
@@ -78,7 +78,7 @@ const BlogPage = () => {
       title: "How to Overcome Procrastination",
       category: "purpose-strategy",
       categoryLabel: "Purpose & Strategy",
-      date: "March 10, 2025",
+      date: "March 10, 2026",
       author: "Productivity Experts",
       excerpt: "Break free from the cycle of delay with proven strategies. Practical steps to take action and achieve your goals consistently.",
       image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200&q=80",
@@ -106,7 +106,7 @@ const BlogPage = () => {
       title: "Finding Your God-Given Purpose",
       category: "faith-calling",
       categoryLabel: "Faith & Calling",
-      date: "March 8, 2025",
+      date: "March 8, 2026",
       author: "Ministry Team",
       excerpt: "Navigate the journey of discovering your unique calling. Practical steps to discern and walk in your divine purpose with clarity and confidence.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80",
@@ -137,7 +137,7 @@ const BlogPage = () => {
       title: "Building Resilience in Uncertain Times",
       category: "purpose-strategy",
       categoryLabel: "Purpose & Strategy",
-      date: "March 5, 2025",
+      date: "March 5, 2026",
       author: "Leadership Team",
       excerpt: "Develop the mental toughness needed to thrive through challenges. Learn how successful leaders maintain composure and lead effectively during crisis.",
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
@@ -165,7 +165,7 @@ const BlogPage = () => {
       title: "Spiritual Disciplines for Modern Leaders",
       category: "faith-calling",
       categoryLabel: "Faith & Calling",
-      date: "March 3, 2025",
+      date: "March 3, 2026",
       author: "Ministry Team",
       excerpt: "Integrate timeless spiritual practices into your leadership journey. Discover how prayer, meditation, and scripture transform your leadership impact.",
       image: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=1200&q=80",
@@ -198,60 +198,63 @@ const BlogPage = () => {
     : blogPosts.filter(post => post.category === selectedCategory);
 
   const getCategoryIcon = (category) => {
-    if (category === 'purpose-strategy') return <BookOpen className="w-5 h-5" />;
-    if (category === 'faith-calling') return <Sparkles className="w-5 h-5" />;
+    if (category === 'purpose-strategy') return <BookOpen className="w-3.5 h-3.5" />;
+    if (category === 'faith-calling') return <Sparkles className="w-3.5 h-3.5" />;
     return null;
   };
 
-  // Single Post View
+  // ==========================================
+  // SINGLE POST VIEW
+  // ==========================================
   if (selectedPost) {
     return (
-      <div className="min-h-screen bg-white">
-        {/* Hero Image */}
-        <div className="relative h-[60vh] overflow-hidden">
+      <div className="min-h-screen bg-[#050505] text-white selection:bg-orange-500/30 font-sans">
+        
+        {/* Hero Image & Header */}
+        <div className="relative h-[60vh] overflow-hidden bg-[#050505]">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent z-10" />
           <img 
             src={selectedPost.image} 
             alt={selectedPost.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover grayscale-[30%] opacity-80"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
           
-          {/* Back Button */}
+          {/* Back Button - Exclusively visible here, UPDATED POSITION to clear the fixed nav */}
           <button 
             onClick={() => setSelectedPost(null)}
-            className="absolute top-8 left-8 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 hover:bg-white transition-all shadow-lg"
+            className="absolute top-24 md:top-28 left-6 md:left-12 px-5 py-2.5 bg-black/40 border border-white/10 backdrop-blur-md rounded-full flex items-center gap-2 text-xs uppercase tracking-widest text-gray-300 hover:text-white hover:border-orange-500 transition-all z-30 group shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Blog
           </button>
 
           {/* Title Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 lg:p-16 z-20">
             <div className="max-w-4xl mx-auto">
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4 ${
+              <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-widest mb-6 border ${
                 selectedPost.category === 'purpose-strategy' 
-                  ? 'bg-blue-600 text-white' 
-                  : 'bg-gradient-to-r from-[#ffa300] to-purple-600 text-white'
+                  ? 'bg-white/5 border-white/20 text-white' 
+                  : 'bg-orange-500/10 border-orange-500/30 text-orange-400'
               }`}>
                 {getCategoryIcon(selectedPost.category)}
                 {selectedPost.categoryLabel}
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+              <h1 className="font-['Anton'] text-4xl md:text-5xl lg:text-7xl uppercase tracking-wide text-white mb-6 leading-[1.1]">
                 {selectedPost.title}
               </h1>
               
-              <div className="flex flex-wrap items-center gap-6 text-white/90">
+              <div className="flex flex-wrap items-center gap-6 text-[10px] md:text-xs uppercase tracking-widest text-gray-400 font-medium">
                 <div className="flex items-center gap-2">
-                  <User className="w-5 h-5" />
+                  <User className="w-4 h-4 text-orange-500" />
                   {selectedPost.author}
                 </div>
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
+                  <Calendar className="w-4 h-4 text-orange-500" />
                   {selectedPost.date}
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5" />
+                  <Clock className="w-4 h-4 text-orange-500" />
                   {selectedPost.readTime}
                 </div>
               </div>
@@ -260,37 +263,37 @@ const BlogPage = () => {
         </div>
 
         {/* Article Content */}
-        <article className="max-w-4xl mx-auto px-6 py-16">
+        <article className="relative z-20 max-w-4xl mx-auto px-6 py-16 md:py-20">
           <div 
-            className="prose prose-lg max-w-none
-              prose-headings:font-bold prose-headings:text-gray-900 prose-headings:mt-12 prose-headings:mb-6
-              prose-h2:text-3xl prose-h2:border-b prose-h2:border-gray-200 prose-h2:pb-4
-              prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
-              prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-gray-900 prose-strong:font-semibold
-              prose-ul:my-6 prose-li:my-2"
+            className="prose prose-invert prose-lg max-w-none
+              prose-headings:font-['Anton'] prose-headings:font-normal prose-headings:uppercase prose-headings:tracking-wide prose-headings:text-white prose-headings:mt-16 prose-headings:mb-6
+              prose-h2:text-3xl prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4
+              prose-p:text-gray-300 prose-p:font-light prose-p:leading-relaxed prose-p:mb-8 prose-p:text-base md:prose-p:text-lg
+              prose-a:text-orange-500 prose-a:no-underline hover:prose-a:text-orange-400
+              prose-strong:text-white prose-strong:font-medium
+              prose-ul:my-8 prose-li:my-3 prose-li:text-gray-300 prose-li:font-light"
             dangerouslySetInnerHTML={{ __html: selectedPost.content }}
           />
 
           {/* Share Section */}
-          <div className="mt-16 pt-8 border-t border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Share this article</h3>
-            <div className="flex gap-4">
-              <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                Share on Twitter
+          <div className="mt-20 pt-10 border-t border-white/10">
+            <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white mb-6">Share this article</h3>
+            <div className="flex flex-wrap gap-4">
+              <button className="px-6 py-3 bg-white/5 border border-white/10 text-gray-300 text-xs font-semibold uppercase tracking-widest rounded-full hover:bg-[#1DA1F2] hover:border-transparent hover:text-white transition-all flex items-center gap-2 group">
+                <Twitter className="w-4 h-4" /> Twitter
               </button>
-              <button className="px-6 py-3 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors">
-                Share on Facebook
+              <button className="px-6 py-3 bg-white/5 border border-white/10 text-gray-300 text-xs font-semibold uppercase tracking-widest rounded-full hover:bg-[#4267B2] hover:border-transparent hover:text-white transition-all flex items-center gap-2 group">
+                <Facebook className="w-4 h-4" /> Facebook
               </button>
-              <button className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                Share on WhatsApp
+              <button className="px-6 py-3 bg-white/5 border border-white/10 text-gray-300 text-xs font-semibold uppercase tracking-widest rounded-full hover:bg-[#25D366] hover:border-transparent hover:text-white transition-all flex items-center gap-2 group">
+                <MessageCircle className="w-4 h-4" /> WhatsApp
               </button>
             </div>
           </div>
 
           {/* Related Articles */}
-          <div className="mt-16 pt-8 border-t border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">Related Articles</h3>
+          <div className="mt-20 pt-10 border-t border-white/10">
+            <h3 className="font-['Anton'] text-2xl uppercase tracking-wide text-white mb-8">Related Articles</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {blogPosts
                 .filter(post => post.id !== selectedPost.id && post.category === selectedPost.category)
@@ -302,82 +305,68 @@ const BlogPage = () => {
                       setSelectedPost(post);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="text-left bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-all"
+                    className="text-left bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 hover:border-orange-500/30 hover:bg-white/10 transition-all group"
                   >
-                    <h4 className="font-bold text-gray-900 mb-2">{post.title}</h4>
-                    <p className="text-gray-600 text-sm">{post.excerpt}</p>
+                    <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-gray-500 mb-3">
+                      <Calendar className="w-3 h-3" /> {post.date}
+                    </div>
+                    <h4 className="font-bold text-lg text-white mb-3 group-hover:text-orange-400 transition-colors">{post.title}</h4>
+                    <p className="text-gray-400 text-sm font-light line-clamp-2">{post.excerpt}</p>
                   </button>
                 ))}
             </div>
           </div>
         </article>
-
-        {/* CTA Section */}
-        <div className="bg-gradient-to-r from-[#ffa300] via-orange-500 to-purple-600 py-16">
-          <div className="max-w-4xl mx-auto px-6 text-center text-white">
-            <h2 className="text-3xl font-bold mb-4">Transform Your Leadership Journey</h2>
-            <p className="text-xl text-orange-50 mb-8">
-              Ready to take your leadership to the next level? Explore our premium coaching packages.
-            </p>
-            <button className="bg-white text-[#ffa300] px-8 py-4 rounded-full font-bold text-lg hover:bg-orange-50 transition-colors shadow-xl">
-              Explore Premium Packages
-            </button>
-          </div>
-        </div>
       </div>
     );
   }
 
-  // Blog List View
+  // ==========================================
+  // BLOG LIST VIEW
+  // ==========================================
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section - Similar to Services Page */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-purple-50 pt-24 pb-16">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#ffa300] to-orange-300 rounded-full opacity-10 -translate-y-1/2 translate-x-1/2"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-purple-200 to-[#ffa300] rounded-full opacity-10 translate-y-1/2 -translate-x-1/2"></div>
-        </div>
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-orange-500/30 font-sans relative overflow-hidden">
+      
+      {/* Global Ambient Background Glows */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] right-[-5%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-amber-500/5 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-orange-600/5 rounded-full blur-[120px]"></div>
+      </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 text-center">
-          <div className="inline-flex items-center px-4 py-2 bg-white shadow-sm rounded-full mb-6 border border-orange-100">
-            <Sparkles className="w-4 h-4 text-[#ffa300] mr-2" />
-            <span className="text-[#071108] text-sm font-medium">Insights for Purpose-Driven Leaders</span>
+      {/* Hero Section */}
+      <section className="relative z-10 pt-32 pb-16">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
+          <div className="inline-flex items-center mb-6">
+            <Sparkles className="w-3.5 h-3.5 text-orange-500 mr-2.5" />
+            <span className="text-orange-500 text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase">
+              Insights for Purpose-Driven Leaders
+            </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#071108] mb-6 leading-tight">
+          <h1 className="font-['Anton'] text-4xl md:text-5xl lg:text-7xl uppercase tracking-wide text-white mb-6 leading-[1.1]">
             Content Hub
-            <span className="block bg-gradient-to-r from-[#ffa300] via-orange-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500 bg-clip-text text-transparent mt-2">
               Where Wisdom Meets Purpose
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">
+          <p className="text-sm md:text-base text-gray-400 font-light max-w-2xl mx-auto mb-10 leading-relaxed uppercase tracking-wide">
             Discover insights that transform your impact and deepen your calling. Leadership wisdom meets divine purpose.
           </p>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            <div className="flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-blue-100 shadow-sm">
-              <BookOpen className="w-5 h-5 text-blue-600" />
-              <span className="text-gray-700 font-medium">Leadership Strategy</span>
-            </div>
-            <div className="flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-orange-100 shadow-sm">
-              <Sparkles className="w-5 h-5 text-[#ffa300]" />
-              <span className="text-gray-700 font-medium">Faith & Calling</span>
-            </div>
-          </div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        {/* Category Filter */}
-        <AnimatedSection className="mb-12">
-          <div className="flex flex-wrap gap-4 justify-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pb-24 lg:px-12">
+        
+        {/* Category Filter (Pill Design) */}
+        <AnimatedSection className="mb-16">
+          <div className="flex flex-wrap gap-3 justify-center">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+              className={`px-8 py-3 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 ${
                 selectedCategory === 'all'
-                  ? 'bg-gradient-to-r from-[#ffa300] to-orange-500 text-white shadow-lg scale-105'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 shadow'
+                  ? 'bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-[0_4px_15px_rgba(249,115,22,0.3)]'
+                  : 'bg-[#0a0a0a] border border-white/10 text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
               All Articles
@@ -385,25 +374,25 @@ const BlogPage = () => {
             
             <button
               onClick={() => setSelectedCategory('purpose-strategy')}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 ${
+              className={`px-8 py-3 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${
                 selectedCategory === 'purpose-strategy'
-                  ? 'bg-blue-600 text-white shadow-lg scale-105'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 shadow'
+                  ? 'bg-white/10 border border-white/20 text-white shadow-lg'
+                  : 'bg-[#0a0a0a] border border-white/10 text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
-              <BookOpen className="w-5 h-5" />
+              <BookOpen className="w-4 h-4" />
               Purpose & Strategy
             </button>
             
             <button
               onClick={() => setSelectedCategory('faith-calling')}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 ${
+              className={`px-8 py-3 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 flex items-center gap-2 ${
                 selectedCategory === 'faith-calling'
-                  ? 'bg-gradient-to-r from-[#ffa300] to-purple-600 text-white shadow-lg scale-105'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 shadow'
+                  ? 'bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-[0_4px_15px_rgba(249,115,22,0.3)]'
+                  : 'bg-[#0a0a0a] border border-white/10 text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
-              <Sparkles className="w-5 h-5" />
+              <Sparkles className="w-4 h-4" />
               Faith & Calling
             </button>
           </div>
@@ -411,12 +400,14 @@ const BlogPage = () => {
 
         {/* Category Descriptions */}
         {selectedCategory === 'purpose-strategy' && (
-          <AnimatedSection className="mb-12 bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg">
-            <div className="flex items-start gap-4">
-              <BookOpen className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
+          <AnimatedSection className="mb-12 bg-white/5 border border-white/10 p-6 md:p-8 rounded-2xl max-w-4xl mx-auto backdrop-blur-sm">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-5">
+              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                <BookOpen className="w-5 h-5 text-white" />
+              </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Purpose & Strategy</h3>
-                <p className="text-gray-700">
+                <h3 className="font-['Anton'] text-xl tracking-wide text-white mb-2 uppercase">Purpose & Strategy</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed">
                   Universal leadership insights and practical strategies to elevate your effectiveness. 
                   These articles cover timeless principles applicable to leaders across all fields and industries.
                 </p>
@@ -426,12 +417,14 @@ const BlogPage = () => {
         )}
 
         {selectedCategory === 'faith-calling' && (
-          <AnimatedSection className="mb-12 bg-gradient-to-r from-orange-50 to-purple-50 border-l-4 border-[#ffa300] p-6 rounded-r-lg">
-            <div className="flex items-start gap-4">
-              <Sparkles className="w-8 h-8 text-[#ffa300] flex-shrink-0 mt-1" />
+          <AnimatedSection className="mb-12 bg-orange-500/5 border border-orange-500/20 p-6 md:p-8 rounded-2xl max-w-4xl mx-auto backdrop-blur-sm">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-5">
+              <div className="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center flex-shrink-0">
+                <Sparkles className="w-5 h-5 text-orange-500" />
+              </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Faith & Calling</h3>
-                <p className="text-gray-700">
+                <h3 className="font-['Anton'] text-xl tracking-wide text-orange-500 mb-2 uppercase">Faith & Calling</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed">
                   Spiritual guidance for leaders seeking to align their work with divine purpose. 
                   Explore the intersection of faith, leadership, and calling in these transformative articles.
                 </p>
@@ -441,21 +434,30 @@ const BlogPage = () => {
         )}
 
         {/* Blog Posts Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {filteredPosts.map((post) => (
             <AnimatedSection key={post.id}>
-              <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col cursor-pointer">
+              <article 
+                className="bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden hover:border-orange-500/30 transition-all duration-500 group h-full flex flex-col cursor-pointer"
+                onClick={() => {
+                  setSelectedPost(post);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
                 {/* Image */}
-                <div className="relative h-48 overflow-hidden" onClick={() => setSelectedPost(post)}>
+                <div className="relative h-56 overflow-hidden">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10"></div>
                   <img 
                     src={post.image} 
                     alt={post.title}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                   />
-                  <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-2 ${
+                  
+                  {/* Category Tag Overlay */}
+                  <div className={`absolute top-4 left-4 z-20 px-3 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-widest flex items-center gap-2 backdrop-blur-md border ${
                     post.category === 'purpose-strategy' 
-                      ? 'bg-blue-600 text-white' 
-                      : 'bg-gradient-to-r from-[#ffa300] to-purple-600 text-white'
+                      ? 'bg-black/60 border-white/20 text-white' 
+                      : 'bg-black/60 border-orange-500/30 text-orange-400'
                   }`}>
                     {getCategoryIcon(post.category)}
                     {post.categoryLabel}
@@ -463,42 +465,32 @@ const BlogPage = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex-1 flex flex-col">
+                <div className="p-6 md:p-8 flex-1 flex flex-col relative">
                   {/* Meta Info */}
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
+                  <div className="flex items-center gap-4 text-[10px] uppercase tracking-widest text-gray-500 font-medium mb-4">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-orange-500" />
                       {post.date}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <User className="w-4 h-4" />
-                      {post.author}
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h2 
-                    className="text-xl font-bold text-gray-900 mb-3 hover:text-[#ffa300] transition-colors cursor-pointer"
-                    onClick={() => setSelectedPost(post)}
-                  >
+                  <h2 className="text-xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors leading-tight">
                     {post.title}
                   </h2>
 
                   {/* Excerpt */}
-                  <p className="text-gray-600 mb-4 flex-1">
+                  <p className="text-gray-400 text-sm font-light mb-6 flex-1 line-clamp-3 leading-relaxed">
                     {post.excerpt}
                   </p>
 
                   {/* Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <span className="text-sm text-gray-500">{post.readTime}</span>
-                    <button 
-                      onClick={() => setSelectedPost(post)}
-                      className="text-[#ffa300] font-semibold flex items-center gap-2 hover:gap-3 transition-all"
-                    >
+                  <div className="flex items-center justify-between pt-5 border-t border-white/5 mt-auto">
+                    <span className="text-[10px] uppercase tracking-widest text-gray-500">{post.readTime}</span>
+                    <span className="text-orange-500 text-xs font-semibold uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">
                       Read More
                       <ArrowRight className="w-4 h-4" />
-                    </button>
+                    </span>
                   </div>
                 </div>
               </article>
@@ -506,16 +498,24 @@ const BlogPage = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <AnimatedSection className="mt-16 bg-gradient-to-r from-[#ffa300] via-orange-500 to-purple-600 rounded-2xl p-12 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Leadership?</h2>
-          <p className="text-xl text-orange-50 mb-8 max-w-2xl mx-auto">
-            Explore our premium coaching packages designed to help you lead with purpose and divine authority.
-          </p>
-          <button className="bg-white text-[#ffa300] px-8 py-4 rounded-full font-bold text-lg hover:bg-orange-50 transition-colors shadow-xl">
-            Explore Premium Packages
-          </button>
+        {/* CTA Section */}
+        <AnimatedSection className="mt-24 relative overflow-hidden rounded-3xl">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1a1005] to-[#0a0a0a] border border-orange-500/30 rounded-3xl"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[80px] pointer-events-none"></div>
+          
+          <div className="relative z-10 p-12 md:p-16 text-center">
+            <h2 className="font-['Anton'] text-3xl md:text-5xl uppercase tracking-wide text-white mb-4">
+              Ready to Transform Your Leadership?
+            </h2>
+            <p className="text-sm md:text-base text-gray-400 font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+              Explore our premium coaching packages designed to help you lead with purpose and divine authority.
+            </p>
+            <button className="px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-600 text-white rounded-full font-semibold text-sm hover:from-orange-600 hover:to-amber-700 transition-all shadow-[0_4px_20px_rgba(249,115,22,0.3)] uppercase tracking-wide">
+              Explore Premium Packages
+            </button>
+          </div>
         </AnimatedSection>
+
       </div>
     </div>
   );
