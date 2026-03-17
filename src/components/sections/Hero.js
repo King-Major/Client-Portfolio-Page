@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Sparkles, MessageCircle } from 'lucide-react';
-import seven from '../../images/SeunOpeyemi.webp';
+
 
 const Hero = () => {
   return (

@@ -1,7 +1,6 @@
 import React from 'react';
 import Hero from '../components/sections/Hero';
 import Portfolio from '../components/portfolio';
-import ContactSection from '../components/ContactForm';
 import MediaPlayer from './Media';
 
 const HomePage = () => {

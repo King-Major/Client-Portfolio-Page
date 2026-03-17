@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heart, Target, Users, Briefcase, Star, ArrowRight, Quote, Award, TrendingUp, MessageCircle } from 'lucide-react';
-import Seven from '../images/Floww.jpeg';
+
 
 const AboutPage = () => {
   return (

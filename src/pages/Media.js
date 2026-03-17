@@ -4,7 +4,7 @@ import { Play, Pause, Volume2, Maximize2, SkipBack, SkipForward, Download, Loade
 const MediaPlayer = () => {
   const [activeTab, setActiveTab] = useState('videos');
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime] = useState(0);
   const [volume, setVolume] = useState(80);
   const [showVolumeControl, setShowVolumeControl] = useState(false);
   const [mediaItems, setMediaItems] = useState({

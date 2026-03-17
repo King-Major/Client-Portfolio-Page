@@ -10,7 +10,7 @@ import Footer from './components/layout/Footer';
 // Page Components
 import Home from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import Portfolio from './components/portfolio';
+
 import BlogPage from './pages/BlogPage';
 import Media from './pages/Media';
 import Contact from './components/ContactForm';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, Sparkles, ArrowRight, Calendar, User, ArrowLeft, Clock, Share2, Twitter, Facebook, MessageCircle } from 'lucide-react';
+import { BookOpen, Sparkles, ArrowRight, Calendar, User, ArrowLeft, Clock, Twitter, Facebook, MessageCircle } from 'lucide-react';
 
 const AnimatedSection = ({ children, className = '' }) => {
   return (
